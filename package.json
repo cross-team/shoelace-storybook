@@ -10,7 +10,13 @@
     "test:watch": "test-storybook --watch",
     "test:coverage": "test-storybook --coverage"
   },
-  "keywords": ["design-system", "shoelace", "web-components", "storybook", "accessibility"],
+  "keywords": [
+    "design-system",
+    "shoelace",
+    "web-components",
+    "storybook",
+    "accessibility"
+  ],
   "author": "",
   "license": "ISC",
   "description": "Inclusio Shoelace - A comprehensive design system built with Shoelace web components",
@@ -32,6 +38,7 @@
     "vite": "^6.3.6"
   },
   "dependencies": {
-    "@shoelace-style/shoelace": "^2.20.1"
+    "@shoelace-style/shoelace": "^2.20.1",
+    "@tabler/icons-webfont": "^3.35.0"
   }
 }

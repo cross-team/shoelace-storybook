@@ -9,6 +9,9 @@ import '@shoelace-style/shoelace/dist/themes/dark.css';
 // Import custom token overrides
 import '../styles/custom-tokens.css';
 
+// Import Tabler Icons
+import '@tabler/icons-webfont/dist/tabler-icons.min.css';
+
 // Set the base path to Shoelace assets
 setBasePath('/node_modules/@shoelace-style/shoelace/dist');
 

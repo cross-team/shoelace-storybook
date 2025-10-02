@@ -46,6 +46,37 @@
   --sl-font-mono: 'Courier New', monospace;
 
   /*
+   * Iconography
+   * Tabler Icons design tokens for consistent icon usage
+   */
+  /* Icon Sizes */
+  --icon-size-xs: 0.75rem;     /* 12px - Tiny icons, inline with text */
+  --icon-size-sm: 1rem;        /* 16px - Small icons, buttons */
+  --icon-size-md: 1.5rem;      /* 24px - Default size, most UI elements */
+  --icon-size-lg: 2rem;        /* 32px - Large icons, feature highlights */
+  --icon-size-xl: 3rem;        /* 48px - Hero icons, empty states */
+  --icon-size-2xl: 4rem;       /* 64px - Extra large, marketing */
+
+  /* Icon Colors - Semantic */
+  --icon-color-default: var(--sl-color-neutral-700);
+  --icon-color-muted: var(--sl-color-neutral-500);
+  --icon-color-primary: var(--sl-color-primary-600);
+  --icon-color-success: var(--sl-color-success-600);
+  --icon-color-warning: var(--sl-color-warning-600);
+  --icon-color-danger: var(--sl-color-danger-600);
+  --icon-color-info: var(--sl-color-sky-600);
+
+  /* Icon Stroke Width (Tabler default is 2) */
+  --icon-stroke-width: 2;
+  --icon-stroke-width-thin: 1.5;
+  --icon-stroke-width-thick: 2.5;
+
+  /* Icon Spacing - Gap when paired with text */
+  --icon-gap-sm: 0.25rem;      /* 4px */
+  --icon-gap-md: 0.5rem;       /* 8px */
+  --icon-gap-lg: 0.75rem;      /* 12px */
+
+  /*
    * Spacing Scale
    * Adjust spacing values
    */
@@ -110,6 +141,37 @@
   --sl-font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sl-font-serif: Georgia, 'Times New Roman', serif;
   --sl-font-mono: 'Courier New', monospace;
+
+  /*
+   * Iconography (Dark Theme)
+   * Size tokens remain the same, only colors adjust for dark mode
+   */
+  /* Icon Sizes - inherit from light theme */
+  --icon-size-xs: 0.75rem;
+  --icon-size-sm: 1rem;
+  --icon-size-md: 1.5rem;
+  --icon-size-lg: 2rem;
+  --icon-size-xl: 3rem;
+  --icon-size-2xl: 4rem;
+
+  /* Icon Colors - Adjusted for dark mode */
+  --icon-color-default: var(--sl-color-neutral-300);
+  --icon-color-muted: var(--sl-color-neutral-500);
+  --icon-color-primary: var(--sl-color-primary-400);
+  --icon-color-success: var(--sl-color-success-400);
+  --icon-color-warning: var(--sl-color-warning-400);
+  --icon-color-danger: var(--sl-color-danger-400);
+  --icon-color-info: var(--sl-color-sky-400);
+
+  /* Icon Stroke Width - same as light */
+  --icon-stroke-width: 2;
+  --icon-stroke-width-thin: 1.5;
+  --icon-stroke-width-thick: 2.5;
+
+  /* Icon Spacing - same as light */
+  --icon-gap-sm: 0.25rem;
+  --icon-gap-md: 0.5rem;
+  --icon-gap-lg: 0.75rem;
 }
 
 /* ============================================================================
@@ -131,15 +193,49 @@
 }
 
 /* Storybook documentation body text - ensure Public Sans is used */
-.sbdocs, .sbdocs p, .sbdocs-content {
+.sbdocs,
+.sbdocs p,
+.sbdocs-content,
+.sbdocs div,
+.sbdocs span,
+.sbdocs-wrapper,
+.docs-story {
   font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   line-height: 1.8 !important;
 }
 
 /* Storybook documentation list items */
 .sbdocs li {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   line-height: 1.8 !important;
 }
+
+/* Story canvas containers */
+#storybook-root,
+#storybook-docs {
+  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* ============================================================================
+   ICON UTILITY CLASSES
+   ============================================================================ */
+
+/* Icon Size Classes */
+.icon-xs { font-size: var(--icon-size-xs) !important; }
+.icon-sm { font-size: var(--icon-size-sm) !important; }
+.icon-md { font-size: var(--icon-size-md) !important; }
+.icon-lg { font-size: var(--icon-size-lg) !important; }
+.icon-xl { font-size: var(--icon-size-xl) !important; }
+.icon-2xl { font-size: var(--icon-size-2xl) !important; }
+
+/* Icon Color Classes */
+.icon-default { color: var(--icon-color-default) !important; }
+.icon-muted { color: var(--icon-color-muted) !important; }
+.icon-primary { color: var(--icon-color-primary) !important; }
+.icon-success { color: var(--icon-color-success) !important; }
+.icon-warning { color: var(--icon-color-warning) !important; }
+.icon-danger { color: var(--icon-color-danger) !important; }
+.icon-info { color: var(--icon-color-info) !important; }
 
 /* ============================================================================
    USAGE EXAMPLES
