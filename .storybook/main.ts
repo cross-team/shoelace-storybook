@@ -2,7 +2,6 @@ import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
   stories: [
-    '../docs/**/*.mdx',
     '../stories/docs/**/*.mdx',
     '../stories/tokens/**/*.@(mdx|stories.@(js|jsx|mjs|ts|tsx))',
     '../stories/components/**/*.@(mdx|stories.@(js|jsx|mjs|ts|tsx))',
