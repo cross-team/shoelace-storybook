@@ -1,0 +1,198 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Customizing Tokens" />
+
+# Customizing Design Tokens
+
+The Inclusio Shoelace design system is built on top of [Shoelace](https://shoelace.style/), which uses CSS custom properties (variables) for all design tokens. This allows you to easily customize the appearance of all components by overriding token values.
+
+## How It Works
+
+Design tokens are defined as CSS custom properties that components reference. By overriding these properties, you can change the look and feel of the entire design system without modifying component code.
+
+### Token Structure
+
+Shoelace provides tokens organized by category:
+
+- **Colors**: Primary, success, warning, danger, and neutral color palettes
+- **Typography**: Font families, sizes, weights, and line heights
+- **Spacing**: Consistent spacing scale for margins and padding
+- **Shadows**: Elevation system for depth and hierarchy
+- **Border Radius**: Roundness values for components
+- **Transitions**: Animation timing and easing functions
+
+## Customizing Tokens
+
+Your custom token overrides are located in:
+
+```
+styles/custom-tokens.css
+```
+
+This file is already imported in Storybook and will automatically apply your customizations to all components.
+
+### Basic Example
+
+To change the primary brand color:
+
+```css
+.sl-theme-light,
+.sl-theme-dark {
+  --sl-color-primary-500: #6366f1; /* Indigo */
+  --sl-color-primary-600: #4f46e5;
+  --sl-color-primary-700: #4338ca;
+}
+```
+
+### Advanced Customization
+
+#### Custom Font Family
+
+```css
+.sl-theme-light,
+.sl-theme-dark {
+  --sl-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sl-font-mono: 'Fira Code', 'Courier New', monospace;
+}
+```
+
+#### Larger Spacing Scale
+
+```css
+.sl-theme-light,
+.sl-theme-dark {
+  --sl-spacing-small: 0.625rem;   /* 10px */
+  --sl-spacing-medium: 1rem;      /* 16px */
+  --sl-spacing-large: 1.5rem;     /* 24px */
+  --sl-spacing-x-large: 2rem;     /* 32px */
+}
+```
+
+#### More Rounded Components
+
+```css
+.sl-theme-light,
+.sl-theme-dark {
+  --sl-border-radius-small: 0.5rem;   /* 8px */
+  --sl-border-radius-medium: 0.75rem; /* 12px */
+  --sl-border-radius-large: 1rem;     /* 16px */
+  --sl-border-radius-pill: 9999px;
+}
+```
+
+## Complete Token Reference
+
+For a complete list of available tokens, visit the [Shoelace Token Documentation](https://shoelace.style/tokens/more).
+
+### Most Commonly Customized Tokens
+
+#### Primary Color Scale
+```
+--sl-color-primary-50 through --sl-color-primary-950
+```
+
+#### Font Sizes
+```
+--sl-font-size-2x-small
+--sl-font-size-x-small
+--sl-font-size-small
+--sl-font-size-medium
+--sl-font-size-large
+--sl-font-size-x-large
+--sl-font-size-2x-large
+--sl-font-size-3x-large
+--sl-font-size-4x-large
+```
+
+#### Font Weights
+```
+--sl-font-weight-light (300)
+--sl-font-weight-normal (400)
+--sl-font-weight-semibold (500)
+--sl-font-weight-bold (700)
+```
+
+#### Spacing Scale
+```
+--sl-spacing-3x-small
+--sl-spacing-2x-small
+--sl-spacing-x-small
+--sl-spacing-small
+--sl-spacing-medium
+--sl-spacing-large
+--sl-spacing-x-large
+--sl-spacing-2x-large
+--sl-spacing-3x-large
+--sl-spacing-4x-large
+```
+
+## Theme-Specific Overrides
+
+You can provide different values for light and dark themes:
+
+```css
+.sl-theme-light {
+  --sl-color-primary-500: #0ea5e9; /* Sky blue for light mode */
+}
+
+.sl-theme-dark {
+  --sl-color-primary-500: #38bdf8; /* Lighter blue for dark mode */
+}
+```
+
+## Best Practices
+
+1. **Start Small**: Override only what you need. The defaults are well-tested.
+
+2. **Maintain Consistency**: Keep color scales consistent (50-950 range).
+
+3. **Consider Accessibility**: Ensure sufficient contrast ratios when customizing colors.
+
+4. **Test Both Themes**: Always test your overrides in both light and dark themes.
+
+5. **Use HSL**: Shoelace uses HSL colors which are easier to modify programmatically:
+   ```css
+   --sl-color-primary-500: hsl(199 89% 48%);
+   ```
+
+6. **Version Control**: Keep `styles/custom-tokens.css` in version control.
+
+## Example: Complete Brand Customization
+
+```css
+.sl-theme-light,
+.sl-theme-dark {
+  /* Brand Colors */
+  --sl-color-primary-500: #6366f1;
+  --sl-color-success-500: #10b981;
+  --sl-color-warning-500: #f59e0b;
+  --sl-color-danger-500: #ef4444;
+
+  /* Typography */
+  --sl-font-sans: 'Inter', sans-serif;
+  --sl-font-size-medium: 1rem;
+  --sl-font-weight-semibold: 600;
+
+  /* Spacing */
+  --sl-spacing-medium: 1rem;
+  --sl-spacing-large: 1.5rem;
+
+  /* Border Radius */
+  --sl-border-radius-medium: 0.5rem;
+  --sl-border-radius-large: 0.75rem;
+
+  /* Shadows */
+  --sl-shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --sl-shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+```
+
+## Viewing Your Changes
+
+After modifying `styles/custom-tokens.css`, your changes will automatically reload in Storybook. Navigate to any component story to see your customizations in action.
+
+## Need Help?
+
+- **Shoelace Documentation**: [https://shoelace.style/](https://shoelace.style/)
+- **Token Reference**: [https://shoelace.style/tokens/more](https://shoelace.style/tokens/more)
+- **CSS Custom Properties**: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/--*)

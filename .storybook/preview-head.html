@@ -1,0 +1,278 @@
+<style>
+  /* Smooth theme transitions for all elements */
+  html,
+  body,
+  .sb-show-main,
+  .docs-story,
+  [data-docs-story] {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme styles with high specificity */
+  html.sl-theme-dark,
+  html.sl-theme-dark body,
+  html.sl-theme-dark #root,
+  html.sl-theme-dark #storybook-root,
+  html.sl-theme-dark #storybook-docs {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+  }
+
+  /* Canvas and preview containers */
+  html.sl-theme-dark .sb-show-main,
+  html.sl-theme-dark .sb-main-padded,
+  html.sl-theme-dark .docs-story,
+  html.sl-theme-dark [data-docs-story] {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+  }
+
+  /* Documentation-specific dark theme styles */
+  html.sl-theme-dark .sbdocs,
+  html.sl-theme-dark .sbdocs-wrapper,
+  html.sl-theme-dark .sbdocs-content,
+  html.sl-theme-dark .sbdocs-preview {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-dark .sbdocs h1,
+  html.sl-theme-dark .sbdocs h2,
+  html.sl-theme-dark .sbdocs h3,
+  html.sl-theme-dark .sbdocs h4,
+  html.sl-theme-dark .sbdocs h5,
+  html.sl-theme-dark .sbdocs h6 {
+    color: #ffffff !important;
+  }
+
+  html.sl-theme-dark .sbdocs p,
+  html.sl-theme-dark .sbdocs li,
+  html.sl-theme-dark .sbdocs td {
+    color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-dark .sbdocs code {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-dark .sbdocs pre {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-dark .sbdocs pre code {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+  }
+
+  /* Target syntax highlighted code blocks */
+  html.sl-theme-dark .sbdocs pre code span {
+    color: inherit !important;
+  }
+
+  html.sl-theme-dark .sbdocs .prismjs,
+  html.sl-theme-dark .sbdocs .prism-code {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-dark .sbdocs a {
+    color: #60a5fa !important;
+  }
+
+  html.sl-theme-dark .sbdocs table {
+    border-color: #3d3d3d !important;
+  }
+
+  html.sl-theme-dark .sbdocs th,
+  html.sl-theme-dark .sbdocs td {
+    border-color: #3d3d3d !important;
+  }
+
+  /* Story blocks in docs mode */
+  .sbdocs .docs-story {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  html.sl-theme-dark .sbdocs .docs-story {
+    background-color: #2d2d2d !important;
+  }
+
+  html.sl-theme-light .sbdocs .docs-story {
+    background-color: #f5f5f5 !important;
+  }
+
+  /* Canvas background sync */
+  .sb-show-main {
+    padding: 1rem;
+  }
+
+  /* Ensure MDX content respects theme */
+  .sbdocs .sbdocs-wrapper {
+    padding: 2rem;
+  }
+
+  /* Light theme styles */
+  html.sl-theme-light,
+  html.sl-theme-light body,
+  html.sl-theme-light #root,
+  html.sl-theme-light #storybook-root,
+  html.sl-theme-light #storybook-docs {
+    background-color: #ffffff !important;
+    color: #1e1e1e !important;
+  }
+
+  html.sl-theme-light .sb-show-main,
+  html.sl-theme-light .sb-main-padded,
+  html.sl-theme-light .docs-story,
+  html.sl-theme-light [data-docs-story] {
+    background-color: #ffffff !important;
+    color: #1e1e1e !important;
+  }
+
+  /* Light theme: Properties table (ArgsTable) styling */
+  html.sl-theme-light .docblock-argstable,
+  html.sl-theme-light .docblock-argstable-body,
+  html.sl-theme-light .sbdocs tbody {
+    color: #1e1e1e !important;
+  }
+
+  html.sl-theme-light .docblock-argstable-head,
+  html.sl-theme-light .sbdocs thead,
+  html.sl-theme-light .sbdocs th {
+    background-color: #f5f5f5 !important;
+    color: #1e1e1e !important;
+    font-weight: 600 !important;
+  }
+
+  html.sl-theme-light .docblock-argstable td,
+  html.sl-theme-light .sbdocs tbody td {
+    color: #1e1e1e !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-light .docblock-argstable th {
+    border-color: #e0e0e0 !important;
+  }
+
+  /* Property name column - make bold and dark */
+  html.sl-theme-light .docblock-argstable td:first-child,
+  html.sl-theme-light .sbdocs tbody td:first-child {
+    font-weight: 600 !important;
+    color: #1e1e1e !important;
+  }
+
+  /* Description column - readable gray */
+  html.sl-theme-light .docblock-argstable td:nth-child(2) {
+    color: #4a4a4a !important;
+  }
+
+  /* Dark theme: Properties table improvements */
+  html.sl-theme-dark .docblock-argstable-head,
+  html.sl-theme-dark .sbdocs thead,
+  html.sl-theme-dark .sbdocs thead th {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+  }
+
+  /* Fix table row backgrounds - this is critical */
+  html.sl-theme-dark .docblock-argstable tbody tr,
+  html.sl-theme-dark .sbdocs tbody tr {
+    background-color: #1e1e1e !important;
+  }
+
+  html.sl-theme-dark .docblock-argstable tbody tr:nth-child(even),
+  html.sl-theme-dark .sbdocs tbody tr:nth-child(even) {
+    background-color: #252525 !important;
+  }
+
+  html.sl-theme-dark .docblock-argstable td,
+  html.sl-theme-dark .docblock-argstable-body,
+  html.sl-theme-dark .sbdocs tbody td {
+    background-color: transparent !important;
+    color: #e0e0e0 !important;
+  }
+
+  html.sl-theme-dark .docblock-argstable td:first-child,
+  html.sl-theme-dark .sbdocs tbody td:first-child {
+    font-weight: 600 !important;
+    color: #ffffff !important;
+  }
+
+  /* Force all text content in table cells to be visible */
+  html.sl-theme-dark .docblock-argstable td *,
+  html.sl-theme-dark .sbdocs tbody td *,
+  html.sl-theme-dark .docblock-argstable td span,
+  html.sl-theme-dark .sbdocs tbody td span {
+    color: inherit !important;
+  }
+
+  /* Description column specifically */
+  html.sl-theme-dark .docblock-argstable td:nth-child(2),
+  html.sl-theme-dark .sbdocs tbody td:nth-child(2),
+  html.sl-theme-dark .docblock-argstable td:nth-child(2) *,
+  html.sl-theme-dark .sbdocs tbody td:nth-child(2) * {
+    color: #c0c0c0 !important;
+  }
+
+  /* Default column */
+  html.sl-theme-dark .docblock-argstable td:nth-child(3),
+  html.sl-theme-dark .sbdocs tbody td:nth-child(3),
+  html.sl-theme-dark .docblock-argstable td:nth-child(3) *,
+  html.sl-theme-dark .sbdocs tbody td:nth-child(3) * {
+    color: #b0b0b0 !important;
+  }
+
+  /* Control column */
+  html.sl-theme-dark .docblock-argstable td:nth-child(4),
+  html.sl-theme-dark .sbdocs tbody td:nth-child(4),
+  html.sl-theme-dark .docblock-argstable td:nth-child(4) *,
+  html.sl-theme-dark .sbdocs tbody td:nth-child(4) * {
+    color: #e0e0e0 !important;
+  }
+
+  /* Fix inline code badges (like "string", "boolean") in table */
+  html.sl-theme-dark .docblock-argstable code,
+  html.sl-theme-dark .sbdocs tbody code {
+    background-color: #e8e8e8 !important;
+    color: #000000 !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Ensure code badge text doesn't get overridden */
+  html.sl-theme-dark .docblock-argstable code *,
+  html.sl-theme-dark .sbdocs tbody code * {
+    color: #000000 !important;
+  }
+
+  /* Fix any remaining light-colored text in table */
+  html.sl-theme-dark .docblock-argstable-body tr,
+  html.sl-theme-dark .sbdocs tbody tr {
+    color: #e0e0e0 !important;
+  }
+
+  /* Fix control inputs and selects in the Control column */
+  html.sl-theme-dark .docblock-argstable select,
+  html.sl-theme-dark .sbdocs tbody select,
+  html.sl-theme-dark .docblock-argstable input,
+  html.sl-theme-dark .sbdocs tbody input,
+  html.sl-theme-dark .docblock-argstable button,
+  html.sl-theme-dark .sbdocs tbody button {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border-color: #4a4a4a !important;
+  }
+
+  /* Fix dropdown option text */
+  html.sl-theme-dark .docblock-argstable select option,
+  html.sl-theme-dark .sbdocs tbody select option {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+  }
+</style>

@@ -1,0 +1,215 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/02-Getting Started" />
+
+# Getting Started
+
+This guide will help you get started with Inclusio Shoelace in your project.
+
+## Installation
+
+### NPM
+
+Install Shoelace via npm:
+
+```bash
+npm install @shoelace-style/shoelace
+```
+
+### CDN
+
+You can also load Shoelace from a CDN by adding these tags to your HTML:
+
+```
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/dist/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/dist/shoelace-autoloader.js"></script>
+```
+
+## Setting the Base Path
+
+If you're using the npm installation, you need to set the base path so Shoelace knows where to load its assets from:
+
+```javascript
+import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
+
+setBasePath('/node_modules/@shoelace-style/shoelace/dist');
+```
+
+## Importing Components
+
+Import only the components you need:
+
+```javascript
+import '@shoelace-style/shoelace/dist/components/button/button.js';
+import '@shoelace-style/shoelace/dist/components/input/input.js';
+import '@shoelace-style/shoelace/dist/components/card/card.js';
+```
+
+## Theming
+
+### Light and Dark Themes
+
+Shoelace comes with built-in light and dark themes. Import both stylesheets:
+
+```javascript
+import '@shoelace-style/shoelace/dist/themes/light.css';
+import '@shoelace-style/shoelace/dist/themes/dark.css';
+```
+
+Then apply the theme class to your root element:
+
+```
+<html class="sl-theme-light">
+  ...
+</html>
+
+<html class="sl-theme-dark">
+  ...
+</html>
+```
+
+### Custom Themes
+
+You can customize the design tokens by overriding CSS custom properties:
+
+```css
+:root {
+  --sl-color-primary-50: #f0f9ff;
+  --sl-color-primary-100: #e0f2fe;
+  --sl-color-primary-200: #bae6fd;
+  --sl-color-primary-300: #7dd3fc;
+  --sl-color-primary-400: #38bdf8;
+  --sl-color-primary-500: #0ea5e9;
+  --sl-color-primary-600: #0284c7;
+  --sl-color-primary-700: #0369a1;
+  --sl-color-primary-800: #075985;
+  --sl-color-primary-900: #0c4a6e;
+  --sl-color-primary-950: #082f49;
+}
+```
+
+## Using Components
+
+### Basic Example
+
+```
+<sl-button variant="primary">
+  Click Me
+</sl-button>
+```
+
+### With Event Handlers
+
+```javascript
+const button = document.querySelector('sl-button');
+
+button.addEventListener('sl-click', () => {
+  console.log('Button clicked');
+});
+```
+
+### Form Components
+
+```
+<form>
+  <sl-input
+    label="Email"
+    type="email"
+    placeholder="you@example.com"
+    required
+  ></sl-input>
+
+  <sl-input
+    label="Password"
+    type="password"
+    password-toggle
+    required
+  ></sl-input>
+
+  <sl-button type="submit" variant="primary">
+    Sign In
+  </sl-button>
+</form>
+```
+
+## Framework Integration
+
+### React
+
+Use the `@lit/react` wrapper:
+
+```bash
+npm install @lit/react
+```
+
+```javascript
+import { createComponent } from '@lit/react';
+import SlButton from '@shoelace-style/shoelace/dist/components/button/button.js';
+
+export const Button = createComponent({
+  tagName: 'sl-button',
+  elementClass: SlButton,
+  react: React,
+  events: {
+    onSlClick: 'sl-click',
+  },
+});
+```
+
+### Vue
+
+Web components work natively in Vue 3:
+
+```javascript
+// vite.config.js
+export default {
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag.startsWith('sl-')
+        }
+      }
+    })
+  ]
+}
+```
+
+### Angular
+
+Configure Angular to recognize custom elements:
+
+```typescript
+// app.module.ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule { }
+```
+
+## TypeScript Support
+
+Shoelace includes TypeScript definitions:
+
+```typescript
+import type SlButton from '@shoelace-style/shoelace/dist/components/button/button.js';
+
+const button: SlButton = document.querySelector('sl-button');
+```
+
+## Best Practices
+
+1. **Import only what you need** - Tree-shake by importing individual components
+2. **Use design tokens** - Reference CSS custom properties for consistent theming
+3. **Leverage slots** - Customize components using named slots
+4. **Handle events properly** - Use the custom event names (prefixed with sl-)
+5. **Test accessibility** - Use the built-in accessibility features
+
+## Next Steps
+
+- Explore the Design Tokens to understand the design system
+- Browse Components to see what's available
+- Check out Patterns for common UI implementations
+- View Templates for complete page examples
